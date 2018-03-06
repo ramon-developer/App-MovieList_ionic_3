@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
 /*
   Generated class for the MoovieProvider provider.
@@ -12,12 +13,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class MoovieProvider {
 
+  private baseApiPath = "https://api.themoviedb.org/3";
+
   constructor(public http: HttpClient) {
     console.log('Hello MoovieProvider Provider');
   }
 
   getLatestMovies() {
-    this.http.get("http://.....");
+    this.http.get(this.baseApiPath + "/movie/latest");
   }
 
 }
