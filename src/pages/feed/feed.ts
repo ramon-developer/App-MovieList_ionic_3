@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MoovieProvider } from "../../providers/moovie/moovie";
+import { MovieProvider } from "../../providers/movie/movie";
 
 /**
  * Generated class for the FeedPage page.
@@ -14,7 +14,7 @@ import { MoovieProvider } from "../../providers/moovie/moovie";
   selector: 'page-feed',
   templateUrl: 'feed.html',
   providers: [
-    MoovieProvider
+    MovieProvider
   ]
 })
 export class FeedPage {
@@ -33,9 +33,8 @@ export class FeedPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private movieProvider: MoovieProvider,
-    ) {
-  }
+    private movieProvider: MovieProvider
+    ) { } 
 
   public somaDoisNumeros(num1:number, num2:number): void {
 
@@ -43,11 +42,12 @@ export class FeedPage {
 
   ionViewDidLoad() {
     this.movieProvider.getLatestMovies().subscribe(
-      data=>{
+      (data) => {
         const response = (data as any);
         const objeto_retorno = JSON.parse(response._body);
         console.log(objeto_retorno);
-      }, error => {
+      }, 
+      (error) => {
         console.log(error);
       }
     )

@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -11,7 +12,7 @@ import 'rxjs/add/operator/map';
   Provider é utilizado para fazer requisicoes dentro do App
 */
 @Injectable()
-export class MoovieProvider {
+export class MovieProvider {
 
   private baseApiPath = "https://api.themoviedb.org/3";
 
@@ -19,11 +20,11 @@ export class MoovieProvider {
     console.log('Hello MoovieProvider Provider');
   }
 
-  getLatestMovies() {
-    this.http.get(this.baseApiPath + "/movie/latest?api_key=" + this.getApiKey());
+  getLatestMovies(page = 1) {
+    return this.http.get(this.baseApiPath + `/movie/latest?api_key=` + this.getApiKey());
   }
 
   getApiKey(): string {
-    "96f64791595f0c7f4511a3830c2539a3"
+    return "96f64791595f0c7f4511a3830c2539a3";
   }
 }
