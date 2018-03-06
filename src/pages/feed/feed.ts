@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MoovieProvider } from '../../providers/moovie/moovie';
+import { MoovieProvider } from "../../providers/moovie/moovie";
 
 /**
  * Generated class for the FeedPage page.
@@ -42,7 +42,7 @@ export class FeedPage {
   }
 
   ionViewDidLoad() {
-    this.movieProvider.getLatestMovies.subscribe(
+    this.movieProvider.getLatestMovies().subscribe(
       data => {
         console.log(data);
       }, error => {
