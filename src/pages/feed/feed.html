@@ -18,16 +18,16 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-card >
+  <ion-card *ngFor="let filme of lista_filmes">
     <ion-item>
       <ion-avatar item-start>
         <img src="assets/images/avatar.png">
       </ion-avatar>
-      <h2 class="feed_title">{{ result.original_title }}</h2>
-      <p class="feed_date">{{ result.release_date }}</p>
+      <h2 class="feed_title">{{ filme.original_title }}</h2>
+      <p class="feed_date">{{ filme.release_date }}</p>
     </ion-item>
 
-    <img [src]="'https://image.tmdb.org/t/p/w300/' + result.backdrop_path">
+    <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.backdrop_path">
 
     <ion-card-content>
       <p>{{ filme.overview }}</p>
