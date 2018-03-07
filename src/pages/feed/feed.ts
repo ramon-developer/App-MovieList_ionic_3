@@ -43,15 +43,16 @@ export class FeedPage {
   }
 
   ionViewDidLoad() {
-    this.movieProvider.getLatestMovies().subscribe(
+    this.movieProvider.getPopularMovies().subscribe(
       data=>{
         // const response = (data as any);
         // const objeto_retorno = JSON.parse(response._body);
         // this.lista_filmes = objeto_retorno.results;
         // console.log(objeto_retorno);
         console.log("Filmes pop's",
-        data['results']);
-      },error => {
+        this.lista_filmes = data['results']);
+      }
+      ,error => {
         console.log(error);
       }
     )

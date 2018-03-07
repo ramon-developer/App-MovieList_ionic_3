@@ -14,14 +14,14 @@
 
 
 <ion-content padding>
-  <ion-refresher (ionRefresh)="doRefresh($event)">
+  <!-- <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+  </ion-refresher> -->
 
   <ion-card *ngFor="let filme of lista_filmes">
     <ion-item>
       <ion-avatar item-start>
-        <img src="assets/images/avatar.png">
+        <img [src]="'https://image.tmdb.org/t/p/w200/' + filme.poster_path">
       </ion-avatar>
       <h2 class="feed_title">{{ filme.original_title }}</h2>
       <p class="feed_date">{{ filme.release_date }}</p>
@@ -37,7 +37,7 @@
       <ion-col>
         <button ion-button icon-left clear small>
         <ion-icon name="thumbs-up"></ion-icon>
-        <div>{{ objeto_feed.qntd_likes }} Likes</div>
+        <div>{{ filme.vote_count }} Likes</div>
       </button>
       </ion-col>
       <ion-col>

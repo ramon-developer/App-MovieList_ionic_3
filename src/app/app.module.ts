@@ -1,5 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
-import { HttpModule } from '@angular/http'; //test
+import { HttpModule } from '@angular/http';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -32,7 +32,8 @@ import { MoovieProvider } from '../providers/movie/movie';
     IntroPageModule,
     HttpClientModule,
     FormsModule,
-    HttpModule //test
+    HttpModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
