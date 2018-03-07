@@ -14,7 +14,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
-import { MovieProvider } from '../providers/movie/movie';
+import { MoovieProvider } from '../providers/movie/movie';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,7 @@ import { MovieProvider } from '../providers/movie/movie';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MovieProvider
+    MoovieProvider
   ]
 })
 export class AppModule {}
