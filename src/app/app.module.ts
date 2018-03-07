@@ -30,7 +30,7 @@ import { MoovieProvider } from '../providers/movie/movie';
     FeedPageModule,
     IntroPageModule,
     HttpClientModule,
-    FormsModule
+    FormsModule    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
