@@ -17,6 +17,7 @@ import { MoovieProvider } from '../providers/movie/movie';
 import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AboutPageModule } from '../pages/about/about.module';
+import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AboutPageModule } from '../pages/about/about.module';
     HttpModule,
     ConfiguracoesPageModule,
     ProfilePageModule,
-    AboutPageModule
+    AboutPageModule,
+    MovieDetailsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

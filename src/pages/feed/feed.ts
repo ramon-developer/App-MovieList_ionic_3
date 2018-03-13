@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MoovieProvider } from "../../providers/movie/movie";
+import { MovieDetailsPage } from '../movie-details/movie-details';
 
 /**
  * Generated class for the FeedPage page.
@@ -68,6 +69,11 @@ export class FeedPage {
 
   ionViewDidEnter() {
     this.loadMovies();
+  }
+
+  openDetails(filme) {
+    console.log(filme);
+    this.navCtrl.push(MovieDetailsPage, {id: filme.id });
   }
 
   loadMovies(){
