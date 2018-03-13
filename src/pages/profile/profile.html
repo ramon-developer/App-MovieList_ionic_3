@@ -14,5 +14,10 @@
 
 <ion-content padding>
   <img *ngIf="img" [src]="img" alt="">
-  <button ion-button block (click)="takePhoto()">Tirar foto</button>
+ <!-- Float the icon right -->
+    <button ion-button outline item-end icon-right (click)="takePhoto()">
+        Tirar Foto
+        <ion-icon name="camera"></ion-icon>
+   </button>
+  <!-- <button ion-button block (click)="takePhoto()">Tirar foto</button> -->
 </ion-content>
