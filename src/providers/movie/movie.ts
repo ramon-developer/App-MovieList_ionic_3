@@ -18,14 +18,13 @@ export class MoovieProvider {
     console.log('Chamada para o webAPI');
   }
 
-  getPopularMovies() {
-    return this.http.get(this.baseApiPath + '/movie/popular?api_key=' + this.getApiKey());
-    // return this.http.get(this.baseUrl + this.movie + 'popular' + this.apikey);
-    // // .map(result => result.json())
+  getPopularMovies(page = 1) {
+    // return this.http.get(this.baseApiPath + '/movie/popular?api_key=' + this.getApiKey() + '&page=' + page);
+    return this.http.get(this.baseApiPath + `/movie/popular?page=` + page + `&api_key=` + this.getApiKey());
   }
 
   getMoviesDetail(filmeid) {
-    return this.http.get(this.baseApiPath + '/movie/' + filmeid + '?api_key=' + this.getApiKey());
+    return this.http.get(this.baseApiPath + `/movie/` + filmeid + `?api_key=` + this.getApiKey());
   }
 
   getApiKey(): string {

@@ -21,20 +21,16 @@ import { MovieDetailsPage } from '../movie-details/movie-details';
 export class FeedPage {
 
   public objeto_feed = {
-    titulo: "Marbet Ramon S.",
-    data: "November 5, 1990",
-    descricao: "Estou criando um App incrível!!! ;)",
-    qntd_likes: 12,
     qntd_comments: 4,
     time_comment: "1h Ago"
   }
 
   public lista_filmes = new Array<any>();
-
-  public nome_usuario: string = "Marbet Ramon S.";
+  public page = 1;
   public loader;
   public refresher;
   public isRefreshing: boolean = false;
+  public infiniteScroll;
 
   constructor(
     public navCtrl: NavController, 
@@ -63,8 +59,6 @@ export class FeedPage {
     this.refresher= refresher;
     this.isRefreshing = true;
     this.loadMovies();
-
-
   }
 
   ionViewDidEnter() {
@@ -76,16 +70,25 @@ export class FeedPage {
     this.navCtrl.push(MovieDetailsPage, {id: filme.id });
   }
 
-  loadMovies(){
+  doInfinite(infiniteScroll) {
+    this.page++;
+    this.infiniteScroll = infiniteScroll;
+    this.loadMovies(true);
+  }
+
+   loadMovies(newpage: boolean = false){
     this.presentLoading();
-    this.movieProvider.getPopularMovies().subscribe(
+    this.movieProvider.getPopularMovies(this.page).subscribe(
       data=>{
-        // const response = (data as any);
-        // const objeto_retorno = JSON.parse(response._body);
-        // this.lista_filmes = objeto_retorno.results;
-        // console.log(objeto_retorno);
-        console.log("Filmes pop's",
-        this.lista_filmes = data['results']);
+        
+        if(newpage){
+          this.lista_filmes = this.lista_filmes.concat(data['results']);
+          console.log(this.lista_filmes);
+          this.infiniteScroll.complete();
+        }else{
+          this.lista_filmes  = data['results'];
+        }
+
         this.hideLoading();
         if(this.isRefreshing){
           this.refresher.complete();

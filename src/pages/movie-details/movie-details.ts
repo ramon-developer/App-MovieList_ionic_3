@@ -30,12 +30,11 @@ export class MovieDetailsPage {
   ionViewDidLoad() {
     this.filmeid = this.navParams.get("id");
     this.movieProvider.getMoviesDetail(this.filmeid).subscribe(data=>{
-    //   let retorno = (data as any)._body;
-    //   this.filme = JSON.parse(retorno);
     let retorno = (data as any);
     if(typeof retorno != 'object')
         retorno = JSON.parse(retorno._body);
     this.filme  = retorno;
+    console.log(this.filme);
     }, error =>{
       console.log(error);
     })
