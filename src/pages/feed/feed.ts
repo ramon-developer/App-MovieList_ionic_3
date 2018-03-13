@@ -80,9 +80,10 @@ export class FeedPage {
     this.presentLoading();
     this.movieProvider.getPopularMovies(this.page).subscribe(
       data=>{
-        
+
         if(newpage){
           this.lista_filmes = this.lista_filmes.concat(data['results']);
+          console.log(this.page);
           console.log(this.lista_filmes);
           this.infiniteScroll.complete();
         }else{
