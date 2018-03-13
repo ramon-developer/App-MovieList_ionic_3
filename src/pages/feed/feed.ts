@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { MoovieProvider } from "../../providers/movie/movie";
 
 /**
@@ -31,18 +31,33 @@ export class FeedPage {
   public lista_filmes = new Array<any>();
 
   public nome_usuario: string = "Marbet Ramon S.";
+  public loader;
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private movieProvider: MoovieProvider
+    private movieProvider: MoovieProvider,
+    public loadingCtrl: LoadingController
     ) { } 
 
+    //funcoes de carregar e fechar o loading
+    presentLoading() {
+      this.loader = this.loadingCtrl.create({
+        content: "Carregando...",
+      });
+      this.loader.present();
+    }
+
+    hideLoading() {
+      this.loader.dismiss();
+    }
+    
   public somaDoisNumeros(num1:number, num2:number): void {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.presentLoading();
     this.movieProvider.getPopularMovies().subscribe(
       data=>{
         // const response = (data as any);
@@ -51,9 +66,11 @@ export class FeedPage {
         // console.log(objeto_retorno);
         console.log("Filmes pop's",
         this.lista_filmes = data['results']);
+        this.hideLoading();
       }
       ,error => {
         console.log(error);
+        this.hideLoading();
       }
     )
   }
