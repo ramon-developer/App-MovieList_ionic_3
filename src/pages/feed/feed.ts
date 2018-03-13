@@ -32,6 +32,8 @@ export class FeedPage {
 
   public nome_usuario: string = "Marbet Ramon S.";
   public loader;
+  public refresher;
+  public isRefreshing: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -56,7 +58,19 @@ export class FeedPage {
 
   }
 
+  doRefresh(refresher) {
+    this.refresher= refresher;
+    this.isRefreshing = true;
+    this.loadMovies();
+
+
+  }
+
   ionViewDidEnter() {
+    this.loadMovies();
+  }
+
+  loadMovies(){
     this.presentLoading();
     this.movieProvider.getPopularMovies().subscribe(
       data=>{
@@ -67,6 +81,10 @@ export class FeedPage {
         console.log("Filmes pop's",
         this.lista_filmes = data['results']);
         this.hideLoading();
+        if(this.isRefreshing){
+          this.refresher.complete();
+          this.isRefreshing = false;
+        }
       }
       ,error => {
         console.log(error);
@@ -74,5 +92,4 @@ export class FeedPage {
       }
     )
   }
-
 }
