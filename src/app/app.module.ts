@@ -45,7 +45,7 @@ import { MoovieProvider } from '../providers/movie/movie';
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoovieProvider
   ]
