@@ -6,8 +6,6 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { FormsModule } from '@angular/forms';
 
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -16,12 +14,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MoovieProvider } from '../providers/movie/movie';
+import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { ProfilePageModule } from '../pages/profile/profile.module';
+import { AboutPageModule } from '../pages/about/about.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
@@ -33,13 +32,13 @@ import { MoovieProvider } from '../providers/movie/movie';
     HttpClientModule,
     FormsModule,
     HttpModule,
-
+    ConfiguracoesPageModule,
+    ProfilePageModule,
+    AboutPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
