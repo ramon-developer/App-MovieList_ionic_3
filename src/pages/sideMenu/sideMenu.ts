@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { AboutPage } from '../about/about';
+import { IntroPage } from '../intro/intro';
 
 @IonicPage()
 @Component({
@@ -25,6 +26,10 @@ export class SideMenuPage {
 
   openAboutPage() {
     this.navCtrl.push(AboutPage);
+  }
+
+  logout() {
+    this.navCtrl.push(IntroPage);
   }
 
 }

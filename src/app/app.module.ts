@@ -18,12 +18,16 @@ import { SideMenuPageModule } from '../pages/sideMenu/sideMenu.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.module';
+import { AuthProvider } from '../providers/auth/auth';
+import { IonicStorageModule } from '@ionic/storage';
+import { LoginPage } from '../pages/login/login';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -36,19 +40,22 @@ import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.mod
     SideMenuPageModule,
     ProfilePageModule,
     AboutPageModule,
-    MovieDetailsPageModule
+    MovieDetailsPageModule,
+    IonicStorageModule.forRoot({ name: '_mydb' })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MoovieProvider
+    MoovieProvider,
+    AuthProvider
   ]
 })
 export class AppModule {}
