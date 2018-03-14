@@ -6,12 +6,22 @@
   </ion-header>
   <ion-content>
     <ion-list>
+
       <button ion-item (click)="openProfilePage()">
+        <ion-icon name="person"></ion-icon>  
         Perfil
       </button>
+
+      <button ion-item (click)="openFavPage()">
+        <ion-icon name="star-outline"></ion-icon>  
+        Favoritos
+      </button>
+
       <button ion-item (click)="openAboutPage()">
+        <ion-icon name="book"></ion-icon>  
         Sobre
       </button>
+
     </ion-list>
   </ion-content>
 </ion-menu>

@@ -14,7 +14,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MoovieProvider } from '../providers/movie/movie';
-import { ConfiguracoesPageModule } from '../pages/configuracoes/configuracoes.module';
+import { SideMenuPageModule } from '../pages/sideMenu/sideMenu.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.module';
@@ -33,7 +33,7 @@ import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.mod
     HttpClientModule,
     FormsModule,
     HttpModule,
-    ConfiguracoesPageModule,
+    SideMenuPageModule,
     ProfilePageModule,
     AboutPageModule,
     MovieDetailsPageModule

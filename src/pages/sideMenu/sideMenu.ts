@@ -4,7 +4,7 @@ import { ProfilePage } from '../profile/profile';
 import { AboutPage } from '../about/about';
 
 /**
- * Generated class for the ConfiguracoesPage page.
+ * Generated class for the SideMenuPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,10 +12,10 @@ import { AboutPage } from '../about/about';
 
 @IonicPage()
 @Component({
-  selector: 'page-configuracoes',
-  templateUrl: 'configuracoes.html',
+  selector: 'page-sideMenu',
+  templateUrl: 'sideMenu.html',
 })
-export class ConfiguracoesPage {
+export class SideMenuPage {
 
   rootPage = ProfilePage;
 
@@ -23,7 +23,7 @@ export class ConfiguracoesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ConfiguracoesPage');
+    console.log('ionViewDidLoad SideMenuPage');
   }
 
   openProfilePage() {
