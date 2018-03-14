@@ -1,13 +1,10 @@
 page-home {
 
-    .bg-style {
-        background-image: url('../../imgs/ica-slidebox-img-1.png');
-        // background: url('../../img/getstart.png');
+    .bg-image {
+        background-image: url('../assets/imgs/movie-icon-15142.png');
         background-repeat: no-repeat;
-        background-size:cover;   
-    }
+        background-size: 50%;  
+        background-position: center;
 
-    ion-navbar {
-        color: #01bcd5;
     }
 }
