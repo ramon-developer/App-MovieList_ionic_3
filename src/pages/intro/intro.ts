@@ -9,15 +9,18 @@ import { LoginPage } from '../login/login';
 })
 export class IntroPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('Você está na tela de Introdução!');
+    console.log('Tela de introdução!');
   }
 
   goToLoginPage(){
-    this.navCtrl.push(LoginPage)
+    this.navCtrl.push(LoginPage);
   }
 
 }

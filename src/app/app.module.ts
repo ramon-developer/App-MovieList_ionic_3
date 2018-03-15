@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './app.firebase.config';
+import {AngularFireAuthModule } from 'angularfire2/auth';
 
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -18,9 +21,11 @@ import { SideMenuPageModule } from '../pages/sideMenu/sideMenu.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.module';
-import { AuthProvider } from '../providers/auth/auth';
 import { IonicStorageModule } from '@ionic/storage';
 import { LoginPage } from '../pages/login/login';
+
+import { RegisterPageModule } from '../pages/register/register.module';
+import { RegisterPage } from '../pages/register/register';
 
 @NgModule({
   declarations: [
@@ -41,21 +46,24 @@ import { LoginPage } from '../pages/login/login';
     ProfilePageModule,
     AboutPageModule,
     MovieDetailsPageModule,
-    IonicStorageModule.forRoot({ name: '_mydb' })
+    IonicStorageModule.forRoot({ name: '_mydb' }),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    RegisterPageModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    RegisterPage
   ],
   providers: [
     StatusBar,
     SplashScreen, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoovieProvider,
-    AuthProvider
   ]
 })
 export class AppModule {}

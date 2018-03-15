@@ -1,19 +1,11 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>Login</ion-title>
-
-    <ion-buttons end>
-        <button ion-button icon-only (click)="jumpLogin()">
-          Pular
-        </button>
-      </ion-buttons>
-
+    <ion-title>Registrar</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-
     <ion-item>
         <ion-label floating>Email</ion-label>
         <ion-input type="email" [(ngModel)]="user.email"></ion-input> 
@@ -27,9 +19,6 @@
     <br>
     <br>
 
-    <button ion-button block (click)="login(user)">Entrar</button>
-    <br>
-    <button ion-button block (click)="register()" color="light">Registrar</button>
-
+    <button ion-button block (click)="register(user)">Registrar</button>
 
 </ion-content>

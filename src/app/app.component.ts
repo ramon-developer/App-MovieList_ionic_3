@@ -17,8 +17,11 @@ import { LoginPage } from '../pages/login/login';//test
 })
 export class MyApp {
 
+  getComponent(arg0: any): any {
+    throw new Error("Method not implemented.");
+  }
   rootPage:any;
-  pages: Array<{title: string, component: any}> //test
+  pages: Array<{title: string, component: any}> 
 
   constructor(
     platform: Platform, 
@@ -40,7 +43,7 @@ export class MyApp {
         this.rootPage = IntroPage;
         configProvider.setconfigData(false);
       } else {
-        this.rootPage = TabsPage; //TabsPage
+        this.rootPage = IntroPage; //TabsPage
       }
       console.log(config);
       statusBar.styleDefault();

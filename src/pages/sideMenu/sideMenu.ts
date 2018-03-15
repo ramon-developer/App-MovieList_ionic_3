@@ -28,8 +28,10 @@ export class SideMenuPage {
     this.navCtrl.push(AboutPage);
   }
 
-  logout() {
-    this.navCtrl.push(IntroPage);
+  logout() {        
+    this.navCtrl.setRoot(IntroPage);
+    window.localStorage.clear();
+    window.location.reload();
   }
 
 }
