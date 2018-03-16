@@ -31,7 +31,7 @@ export class LoginPage {
     try{
     const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if (result) {
-          this.navCtrl.setRoot(RegisterProfilePage); //push for setRoot - ProfilePage
+          this.navCtrl.setRoot(TabsPage); //push for setRoot - ProfilePage
       }
     }
       catch (e) {

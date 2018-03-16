@@ -6,8 +6,14 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Perfil</ion-title>
+    <!-- <ion-nav-buttons item-right (click)="updateProfile()">Atualizar Perfil</ion-nav-buttons> -->
+    <ion-buttons end>
+        <button ion-button icon-only (click)="updateProfile()">
+          <ion-icon name="create"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -18,5 +24,6 @@
   <p>Username: {{(profileData | async)?.username}}</p>
   <p>First name: {{(profileData | async)?.firstname}}</p>
   <p>Last name: {{(profileData | async)?.lastname}}</p>
+
 
 </ion-content>

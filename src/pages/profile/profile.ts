@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 import { Profile } from '../../models/profile';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { RegisterProfilePage } from '../registerProfile/registerProfile';
 
 /**
  * Generated class for the ProfilePage page.
@@ -53,4 +54,9 @@ export class ProfilePage {
     })
   }
 
+  updateProfile() {
+     this.navCtrl.setRoot(RegisterProfilePage)
+    }
 }
+
+
