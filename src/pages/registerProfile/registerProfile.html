@@ -1,0 +1,45 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+     </button>
+
+    <ion-title>Perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Apelido</ion-label>
+    <ion-input [(ngModel)]="profile.username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Primeiro nome</ion-label>
+      <ion-input [(ngModel)]="profile.firstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label floating>Último nome</ion-label>
+      <ion-input [(ngModel)]="profile.lastName"></ion-input>
+  </ion-item>
+
+  <br>
+  <br>
+
+  <!-- BOTAO TIRAR FOTO -->
+  <img *ngIf="img" [src]="img" alt="">
+    <button ion-button outline icon-right block (click)="takePhoto()">
+        Upload Foto<ion-icon name="camera"></ion-icon>
+   </button>
+
+   <br>
+   
+   <button ion-button block (click)="createProfile()">Atualizar Perfil</button>
+
+</ion-content>

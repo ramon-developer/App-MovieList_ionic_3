@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+
+import { Profile } from '../../models/profile';
 
 @Component({
   selector: 'page-home',
@@ -9,8 +12,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 export class HomePage {
 
+  profileData : AngularFireObject<Profile>
+
   constructor(
     private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
     private toast: ToastController,
     public navCtrl: NavController,
     public navParams: NavParams
@@ -25,6 +31,8 @@ export class HomePage {
           message: `Olá, ${data.email}`,
           duration: 3000
         }).present();
+
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`);
       } 
       else {
         // this.toast.create({

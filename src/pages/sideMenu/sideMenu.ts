@@ -17,7 +17,7 @@ export class SideMenuPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SideMenuPage');
+    console.log('chamada do Menu Lateral!');
   }
 
   openProfilePage() {

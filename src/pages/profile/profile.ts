@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+
+import { Profile } from '../../models/profile';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 /**
  * Generated class for the ProfilePage page.
@@ -13,40 +16,41 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
-  providers: [
-    Camera
-  ]
 })
+
 export class ProfilePage {
 
-  img= "";
+  profileData : AngularFireObject<Profile>
 
-  constructor(
+
+  constructor(    
+    private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
+    private toast: ToastController,
     public navCtrl: NavController, 
-    public navParams: NavParams,
-    private camera: Camera
+    public navParams: NavParams
   ) {
   }
 
-  takePhoto() {
-    const options: CameraOptions = {
-      quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-    
-    this.camera.getPicture(options).then((imageData) => {
-     // imageData is either a base64 encoded string or a file URI
-     // If it's base64:
-     this.img = 'data:image/jpeg;base64,' + imageData;
-    }, (err) => {
-     // Handle error
-    });
-  }
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
+    this.afAuth.authState.subscribe(data => {
+
+      if (data && data.email && data.uid){
+        this.toast.create({
+          message: `Olá, ${data.email}`,
+          duration: 3000
+        }).present();
+
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`);
+      } 
+      else {
+        // this.toast.create({
+        //   message: `Não encontrou a autenticacao`,
+        //   duration: 3000
+        // }).present();
+        console.log('ocorreu algum erro, verificar.');
+      }
+    })
   }
 
 }

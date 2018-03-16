@@ -18,7 +18,7 @@ import { FeedPageModule } from '../pages/feed/feed.module';
 import { IntroPageModule } from '../pages/intro/intro.module';
 import { MoovieProvider } from '../providers/movie/movie';
 import { SideMenuPageModule } from '../pages/sideMenu/sideMenu.module';
-import { ProfilePageModule } from '../pages/profile/profile.module';
+import { RegisterProfilePageModule } from '../pages/registerProfile/registerProfile.module';
 import { AboutPageModule } from '../pages/about/about.module';
 import { MovieDetailsPageModule } from '../pages/movie-details/movie-details.module';
 import { IonicStorageModule } from '@ionic/storage';
@@ -26,13 +26,16 @@ import { LoginPage } from '../pages/login/login';
 
 import { RegisterPageModule } from '../pages/register/register.module';
 import { RegisterPage } from '../pages/register/register';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { ProfilePageModule } from '../pages/profile/profile.module';
+import { ProfilePage } from '../pages/profile/profile';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
   ],
   imports: [
     BrowserModule,
@@ -44,12 +47,14 @@ import { RegisterPage } from '../pages/register/register';
     HttpModule,
     SideMenuPageModule,
     ProfilePageModule,
+    RegisterProfilePageModule,
     AboutPageModule,
     MovieDetailsPageModule,
-    IonicStorageModule.forRoot({ name: '_mydb' }),
+    IonicStorageModule.forRoot({ name: '_mydb' }), //verificar necessidade.
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     RegisterPageModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +62,8 @@ import { RegisterPage } from '../pages/register/register';
     HomePage,
     TabsPage,
     LoginPage,
-    RegisterPage
+    RegisterPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,

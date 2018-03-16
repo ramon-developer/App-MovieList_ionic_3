@@ -1,14 +1,7 @@
 
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Login</ion-title>
-
-    <ion-buttons end>
-        <button ion-button icon-only (click)="jumpLogin()">
-          Pular
-        </button>
-      </ion-buttons>
-
   </ion-navbar>
 </ion-header>
 
@@ -27,9 +20,9 @@
     <br>
     <br>
 
-    <button ion-button block (click)="login(user)">Entrar</button>
-    <br>
-    <button ion-button block (click)="register()" color="light">Registrar</button>
-
+    <ion-buttons end>
+        <button ion-button (click)="register()" color="light">Registrar</button>
+        <button ion-button (click)="login(user)">Entrar</button>
+    </ion-buttons>
 
 </ion-content>

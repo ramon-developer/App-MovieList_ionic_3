@@ -4,6 +4,8 @@ import { TabsPage } from '../tabs/tabs';
 import { User } from '../../models/user';
 import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { RegisterProfilePage } from '../registerProfile/registerProfile';
+import { HomePage } from '../home/home';
 
 @IonicPage()
 @Component({
@@ -22,18 +24,14 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
-
-  jumpLogin() {
-    this.navCtrl.push(TabsPage); //push for setRoot
+    console.log('Página de Login');
   }
 
   async login(user: User) {
     try{
     const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
       if (result) {
-          this.navCtrl.push(TabsPage); //push for setRoot
+          this.navCtrl.setRoot(RegisterProfilePage); //push for setRoot - ProfilePage
       }
     }
       catch (e) {
@@ -44,6 +42,6 @@ export class LoginPage {
 
   register() {
     this.navCtrl.push(RegisterPage);
-    console.log('register...');
+    console.log('registrar...');
   }
 }

@@ -20,7 +20,7 @@ export class IntroPage {
   }
 
   goToLoginPage(){
-    this.navCtrl.push(LoginPage);
+    this.navCtrl.setRoot(LoginPage);
   }
 
 }
