@@ -10,8 +10,8 @@ import { SideMenuPage } from '../sideMenu/sideMenu';
 export class TabsPage {
 
   tab1Root = HomePage;
-  tab4Root = FeedPage;
-  tab5Root = SideMenuPage;
+  tab2Root = FeedPage;
+  tab3Root = SideMenuPage;
 
   constructor() {
 

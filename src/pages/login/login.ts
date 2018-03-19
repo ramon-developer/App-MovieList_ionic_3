@@ -6,6 +6,7 @@ import { RegisterPage } from '../register/register';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterProfilePage } from '../registerProfile/registerProfile';
 import { HomePage } from '../home/home';
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -44,4 +45,19 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
     console.log('registrar...');
   }
+
+  loginWithFacebook(){
+
+      let provider = new firebase.auth.FacebookAuthProvider();
+
+      firebase.auth().signInWithRedirect(provider).then(()=>{
+        firebase.auth().getRedirectResult().then((result)=>{
+          alert(JSON.stringify(result));
+        }).catch(function(error){
+          alert(JSON.stringify(error))
+        });
+      })
+  }
+
+
 }

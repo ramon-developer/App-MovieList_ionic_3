@@ -17,6 +17,7 @@ import { ProfilePage } from '../profile/profile';
 })
 export class RegisterProfilePage {
 
+  rootPage = ProfilePage;
   profile = {} as Profile;
   img= "";
 
@@ -52,7 +53,7 @@ export class RegisterProfilePage {
 
   createProfile() {
       this.afAuth.authState.take(1).subscribe(auth => {
-        this.afDataBase.object(`profile/${auth.uid}`).set(this.profile).then(() => this.navCtrl.setRoot(TabsPage))
+        this.afDataBase.object(`profile/${auth.uid}`).set(this.profile).then(() => this.navCtrl.setRoot(this.rootPage))
       })
   }
 

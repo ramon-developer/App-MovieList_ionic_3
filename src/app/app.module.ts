@@ -29,6 +29,8 @@ import { RegisterPage } from '../pages/register/register';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
+import firebase from 'firebase';
+
 
 @NgModule({
   declarations: [
