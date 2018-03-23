@@ -23,6 +23,7 @@
     "@angular/tsc-wrapped": "^4.4.6",
     "@ionic-native/camera": "^4.5.3",
     "@ionic-native/core": "4.4.0",
+    "@ionic-native/facebook": "^4.6.0",
     "@ionic-native/splash-screen": "4.4.0",
     "@ionic-native/status-bar": "4.4.0",
     "@ionic/pro": "1.0.20",
@@ -30,7 +31,7 @@
     "angularfire2": "^5.0.0-rc.6",
     "autoprefixer": "^8.1.0",
     "broser": "1.2.0",
-    "cordova-android": "7.0.0",
+    "cordova-android": "6.3.0",
     "cordova-browser": "5.0.3",
     "cordova-ios": "4.5.4",
     "cordova-plugin-browsertab": "^0.2.0",
@@ -39,6 +40,7 @@
     "cordova-plugin-compat": "^1.2.0",
     "cordova-plugin-customurlscheme": "^4.3.0",
     "cordova-plugin-device": "^2.0.1",
+    "cordova-plugin-facebook4": "^1.9.1",
     "cordova-plugin-inappbrowser": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -74,12 +76,16 @@
         "ANDROID_SCHEME": " ",
         "ANDROID_HOST": " ",
         "ANDROID_PATHPREFIX": "/"
+      },
+      "cordova-plugin-facebook4": {
+        "APP_ID": "203863340200096",
+        "APP_NAME": "Movies for ME"
       }
     },
     "platforms": [
-      "android",
       "ios",
-      "browser"
+      "browser",
+      "android"
     ]
   }
 }

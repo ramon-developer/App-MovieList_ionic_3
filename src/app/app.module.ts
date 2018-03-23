@@ -30,6 +30,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
 import firebase from 'firebase';
+import { Facebook } from '@ionic-native/facebook';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import firebase from 'firebase';
     SplashScreen, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoovieProvider,
+    Facebook
   ]
 })
 export class AppModule {}

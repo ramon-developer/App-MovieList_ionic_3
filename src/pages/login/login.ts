@@ -7,6 +7,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { RegisterProfilePage } from '../registerProfile/registerProfile';
 import { HomePage } from '../home/home';
 import firebase from 'firebase';
+import { Facebook } from '@ionic-native/facebook';
 
 @IonicPage()
 @Component({
@@ -21,6 +22,7 @@ export class LoginPage {
     private afAuth: AngularFireAuth,
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private facebook: Facebook
   ) {
   }
 
@@ -39,7 +41,7 @@ export class LoginPage {
         console.error(e);
       }
 
-  }
+    }
 
   register() {
     this.navCtrl.push(RegisterPage);
@@ -48,15 +50,25 @@ export class LoginPage {
 
   loginWithFacebook(){
 
-      let provider = new firebase.auth.FacebookAuthProvider();
+      // let provider = new firebase.auth.FacebookAuthProvider();
 
-      firebase.auth().signInWithRedirect(provider).then(()=>{
-        firebase.auth().getRedirectResult().then((result)=>{
-          alert(JSON.stringify(result));
-        }).catch(function(error){
-          alert(JSON.stringify(error))
-        });
+      // firebase.auth().signInWithRedirect(provider).then(()=>{
+      //   firebase.auth().getRedirectResult().then((result)=>{
+      //     alert(JSON.stringify(result));
+      //   }).catch(function(error){
+      //     alert(JSON.stringify(error))
+      //   });
+      // })
+
+      this.facebook.login(["email"]).then((loginResponse) =>{
+
+        let credential = firebase.auth.FacebookAuthProvider.credential(loginResponse.authResponse.accessToken);
+        
+        firebase.auth().signInWithCredential(credential).then((info) => {
+          alert(JSON.stringify(info));
+        })
       })
+
   }
 
 
