@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { User } from '../../models/user';
 import { RegisterPage } from '../register/register';
@@ -28,6 +28,7 @@ export class LoginPage {
     private afAuth: AngularFireAuth,
     public navCtrl: NavController, 
     public navParams: NavParams,
+    private platform: Platform,
     private facebook: Facebook,
     private googlePlus: GooglePlus
   ) {
@@ -87,41 +88,78 @@ export class LoginPage {
 
 
 
+  // loginWithGoogle() {
+  //   this.googlePlus.login({})
+  //     .then(res => {
+  //       console.log(res);
+  //       this.user.displayName = res.displayName;
+  //       this.user.email = res.email;
+  //       this.user.familyName = res.familyName;
+  //       this.user.givenName = res.givenName;
+  //       this.user.userId = res.userId;
+  //       this.user.imageUrl = res.imageUrl;
+
+  //       this.isLoggedIn = true;
+  //       alert("entrou")
+
+  //     })
+  //     .catch(err => console.error(err));
+  // }
+
+  // logout() {
+  //   this.googlePlus.logout()
+  //     .then(res => {
+  //       console.log(res);
+  //       this.user.displayName = "";
+  //       this.user.email = "";
+  //       this.user.familyName = "";
+  //       this.user.givenName = "";
+  //       this.user.userId = "";
+  //       this.user.imageUrl = "";
+
+  //       this.isLoggedIn = false;
+  //     })
+  //     .catch(err => console.error(err));
+  // }
+
   loginWithGoogle() {
-    this.googlePlus.login({})
-      .then(res => {
-        console.log(res);
-        this.user.displayName = res.displayName;
-        this.user.email = res.email;
-        this.user.familyName = res.familyName;
-        this.user.givenName = res.givenName;
-        this.user.userId = res.userId;
-        this.user.imageUrl = res.imageUrl;
+  if (this.platform.is('cordova')) {
+    this.nativeGoogleLogin();
+  } else {
+    this.webGoogleLogin();
+  }
+}
 
-        this.isLoggedIn = true;
-        alert("entrou")
+async nativeGoogleLogin(): Promise<void> {
+  try {
 
-      })
-      .catch(err => console.error(err));
+    const gplusUser = await this.googlePlus.login({
+      'webClientId': '878195412908-jmbjtlu82nv4l7pcm6a44e46001dmtb4.apps.googleusercontent.com',
+      'offline': true,
+      'scopes': 'profile email'
+    })
+
+    this.navCtrl.setRoot(TabsPage);
+
+    return await this.afAuth.auth.signInWithCredential(
+      firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
+    
+
+  } catch(err) {
+    console.log(err)
+  }
+}
+
+async webGoogleLogin(): Promise<void> {
+  try {
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const credential = await this.afAuth.auth.signInWithPopup(provider);
+
+  } catch(err) {
+    console.log(err)
   }
 
-  logout() {
-    this.googlePlus.logout()
-      .then(res => {
-        console.log(res);
-        this.user.displayName = "";
-        this.user.email = "";
-        this.user.familyName = "";
-        this.user.givenName = "";
-        this.user.userId = "";
-        this.user.imageUrl = "";
-
-        this.isLoggedIn = false;
-      })
-      .catch(err => console.error(err));
-  }
-
-
+}
 
 
 }
