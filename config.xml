@@ -99,11 +99,11 @@
         <variable name="ANDROID_HOST" value=" " />
         <variable name="ANDROID_PATHPREFIX" value="/" />
     </plugin>
-    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
-        <variable name="APP_ID" value="203863340200096" />
-        <variable name="APP_NAME" value="Movies for ME" />
-    </plugin>
     <engine name="ios" spec="4.5.4" />
     <engine name="browser" spec="5.0.3" />
     <engine name="android" spec="6.3.0" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="160132378014158" />
+        <variable name="APP_NAME" value="Movies for ME" />
+    </plugin>
 </widget>

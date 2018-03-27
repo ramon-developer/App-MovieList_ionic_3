@@ -31,7 +31,8 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { ProfilePage } from '../pages/profile/profile';
 import firebase from 'firebase';
 import { Facebook } from '@ionic-native/facebook';
-
+import { GooglePlus } from '@ionic-native/google-plus';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { Facebook } from '@ionic-native/facebook';
     RegisterPageModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -73,7 +75,8 @@ import { Facebook } from '@ionic-native/facebook';
     SplashScreen, 
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoovieProvider,
-    Facebook
+    Facebook,
+    GooglePlus
   ]
 })
 export class AppModule {}

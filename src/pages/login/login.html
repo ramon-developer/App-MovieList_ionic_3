@@ -1,11 +1,11 @@
 
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar class="favorite">
     <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="bg-image">
 
     <ion-item>
         <ion-label floating>Email</ion-label>
@@ -22,7 +22,7 @@
 
     <ion-buttons end>
         <button ion-button (click)="register()" color="light">Registrar</button>
-        <button ion-button (click)="login(user)">Entrar</button>
+        <button ion-button (click)="login(user)" color="secondary">Entrar</button>
     </ion-buttons>
 
     <br>
@@ -33,8 +33,22 @@
 
     <ion-buttons>
         <button ion-button icon-only (click)="loginWithFacebook()">
-          <ion-icon name="logo-facebook"></ion-icon>
+            <ion-icon name="logo-facebook"></ion-icon>
         </button>
+
+        <!-- <google-login></google-login> -->
+        
     </ion-buttons>    
+
+
+    <ion-buttons>
+            <button ion-button icon-only color="danger" (click)="loginWithGoogle()">
+                <ion-icon name="logo-google"></ion-icon>
+            </button>
+    
+            <!-- <google-login></google-login> -->
+            
+        </ion-buttons>    
+
 
 </ion-content>

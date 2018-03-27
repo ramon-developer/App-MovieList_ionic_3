@@ -12,5 +12,11 @@ page-login {
         text-align: center;
         font-size: 18px;
     }
-  
+
+    .bg-image {
+        background-image: url('../assets/imgs/login_bg.png');
+        background-repeat: no-repeat;
+        // background-size: 250%;  
+        background-position: left;
+    }
 }
