@@ -27,7 +27,7 @@
 
     <br>
 
-<h6>Outras opções:</h6>
+<h6>Mais opções:</h6>
 
     <br>
 
@@ -36,27 +36,21 @@
         <button ion-fab><ion-icon name="add"></ion-icon></button>
 
         <ion-fab-list side="top">
-            <button ion-fab><ion-icon name="logo-facebook" (click)="loginWithFacebook()"></ion-icon></button>
+            <button ion-fab color="facebook"><ion-icon name="logo-facebook" (click)="loginWithFacebook()"></ion-icon></button>
         </ion-fab-list>
 
         <ion-fab-list side="right">
-            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+            <button ion-fab color="twitter"><ion-icon name="logo-twitter"></ion-icon></button>
         </ion-fab-list>
 
         <ion-fab-list side="bottom">
-            <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+            <button ion-fab color="vimeo"><ion-icon name="logo-vimeo"></ion-icon></button>
         </ion-fab-list>
 
         <ion-fab-list side="left" *ngIf="(usr | async) || {} as usr"> 
-                <button ion-fab                 
-                
-                    *ngIf="!usr.uid"
-                    (tap)="googleLogin()">
-                    <ion-icon name="logo-googleplus"></ion-icon>
-
-                </button>
-
-            </ion-fab-list>
+            <button ion-fab color="googleplus" *ngIf="!usr.uid" (tap)="googleLogin()">
+            <ion-icon name="logo-googleplus"></ion-icon></button>
+        </ion-fab-list>
 
     </ion-fab>
 
