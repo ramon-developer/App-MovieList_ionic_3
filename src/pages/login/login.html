@@ -5,7 +5,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="bg-image">
+<ion-content padding>
 
     <ion-item>
         <ion-label floating>Email</ion-label>
@@ -27,28 +27,37 @@
 
     <br>
 
-    <p>Logar com:</p>
+<h6>Outras opções:</h6>
 
     <br>
 
-    <ion-buttons>
-        <button ion-button icon-only (click)="loginWithFacebook()">
-            <ion-icon name="logo-facebook"></ion-icon>
-        </button>
+    <ion-fab middle center edge class="personalizedPosition">
 
-        <!-- <google-login></google-login> -->
-        
-    </ion-buttons>    
+        <button ion-fab><ion-icon name="add"></ion-icon></button>
 
+        <ion-fab-list side="top">
+            <button ion-fab><ion-icon name="logo-facebook" (click)="loginWithFacebook()"></ion-icon></button>
+        </ion-fab-list>
 
-    <ion-buttons>
-            <button ion-button icon-only color="danger" (click)="loginWithGoogle()">
-                <ion-icon name="logo-google"></ion-icon>
-            </button>
-    
-            <!-- <google-login></google-login> -->
-            
-        </ion-buttons>    
+        <ion-fab-list side="right">
+            <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
+        </ion-fab-list>
 
+        <ion-fab-list side="bottom">
+            <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
+        </ion-fab-list>
+
+        <ion-fab-list side="left" *ngIf="(usr | async) || {} as usr"> 
+                <button ion-fab                 
+                
+                    *ngIf="!usr.uid"
+                    (tap)="googleLogin()">
+                    <ion-icon name="logo-googleplus"></ion-icon>
+
+                </button>
+
+            </ion-fab-list>
+
+    </ion-fab>
 
 </ion-content>

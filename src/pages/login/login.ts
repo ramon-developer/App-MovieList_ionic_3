@@ -10,6 +10,7 @@ import firebase from 'firebase';
 import { Facebook } from '@ionic-native/facebook';
 import { FIREBASE_CONFIG } from '../../app/app.firebase.config';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { Observable } from 'rxjs/Observable';
 
 firebase.initializeApp(FIREBASE_CONFIG)//TEST
 
@@ -19,6 +20,8 @@ firebase.initializeApp(FIREBASE_CONFIG)//TEST
   templateUrl: 'login.html',
 })
 export class LoginPage {
+
+  usr: Observable<firebase.User>;
 
   user = {} as User;
 
@@ -32,6 +35,8 @@ export class LoginPage {
     private facebook: Facebook,
     private googlePlus: GooglePlus
   ) {
+    this.usr = this.afAuth.authState;
+
   }
 
   ionViewDidLoad() {
@@ -74,7 +79,8 @@ export class LoginPage {
         
         firebase.auth().signInWithCredential(credential).then(info=> {
           alert(JSON.stringify(info));
-          this.navCtrl.push(RegisterPage);
+
+          this.navCtrl.setRoot(TabsPage);
 
         }).catch(ferr=>{
           alert("firebase error")
@@ -122,44 +128,57 @@ export class LoginPage {
   //     .catch(err => console.error(err));
   // }
 
-  loginWithGoogle() {
-  if (this.platform.is('cordova')) {
-    this.nativeGoogleLogin();
-  } else {
-    this.webGoogleLogin();
-  }
-}
-
-async nativeGoogleLogin(): Promise<void> {
-  try {
-
-    const gplusUser = await this.googlePlus.login({
-      'webClientId': '878195412908-jmbjtlu82nv4l7pcm6a44e46001dmtb4.apps.googleusercontent.com',
-      'offline': true,
-      'scopes': 'profile email'
-    })
-
-    this.navCtrl.setRoot(TabsPage);
-
-    return await this.afAuth.auth.signInWithCredential(
-      firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
-    
-
-  } catch(err) {
-    console.log(err)
-  }
-}
-
-async webGoogleLogin(): Promise<void> {
-  try {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const credential = await this.afAuth.auth.signInWithPopup(provider);
-
-  } catch(err) {
-    console.log(err)
+  googleLogin() {
+    if (this.platform.is('cordova')) {
+      this.nativeGoogleLogin();
+    } else {
+      this.webGoogleLogin();
+    }
   }
 
-}
+  async nativeGoogleLogin(): Promise<void> {
+    try {
 
+      const gplusUser = await this.googlePlus.login({
+        'webClientId': '878195412908-jmbjtlu82nv4l7pcm6a44e46001dmtb4.apps.googleusercontent.com',
+        'offline': true,
+        'scopes': 'profile email'
+      })
+
+      return await this.afAuth.auth.signInWithCredential(
+        firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
+      )
+      // let result = this.afAuth.auth.signInWithCredential(
+      //   firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
+      // if (result) {
+      // return this.navCtrl.setRoot(TabsPage);
+      // }
+
+    } catch(err) {
+      console.log(err)
+    }
+  }
+
+  async webGoogleLogin(): Promise<void> {
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const credential = await this.afAuth.auth.signInWithPopup(provider);
+
+      this.navCtrl.setRoot(TabsPage);
+
+
+    } catch(err) {
+      console.log(err)
+    }
+
+  }
+
+  signOut() {
+    this.afAuth.auth.signOut();
+    if (this.platform.is('cordova')) {
+      this.googlePlus.logout();
+      this.googlePlus.disconnect(); //test disconnect google plus
+    }
+  }
 
 }

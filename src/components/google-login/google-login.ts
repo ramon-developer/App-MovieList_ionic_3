@@ -45,11 +45,15 @@ export class GoogleLoginComponent {
         'scopes': 'profile email'
       })
 
-      let result = this.afAuth.auth.signInWithCredential(
-        firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
-      if (result) {
-      return this.navCtrl.setRoot(TabsPage);
-      }
+      return await this.afAuth.auth.signInWithCredential(
+        firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken)
+      )
+
+      // let result = this.afAuth.auth.signInWithCredential(
+      //   firebase.auth.GoogleAuthProvider.credential(gplusUser.idToken));
+      // if (result) {
+      // return this.navCtrl.setRoot(TabsPage);
+      // }
 
     } catch(err) {
       console.log(err)

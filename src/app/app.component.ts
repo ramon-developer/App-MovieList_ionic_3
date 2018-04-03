@@ -43,7 +43,7 @@ export class MyApp {
         this.rootPage = IntroPage;
         configProvider.setconfigData(false);
       } else {
-        this.rootPage = IntroPage; //TabsPage
+        this.rootPage = TabsPage; //TabsPage
       }
       console.log(config);
       statusBar.styleDefault();

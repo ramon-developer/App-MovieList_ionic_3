@@ -28,7 +28,7 @@ export class HomePage {
 
       if (data && data.email && data.uid){
         this.toast.create({
-          message: `Olá, ${data.email}`,
+          message: `Olá, ${data.displayName}`,
           duration: 3000
         }).present();
 

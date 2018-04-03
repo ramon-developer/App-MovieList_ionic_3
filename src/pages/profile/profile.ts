@@ -34,24 +34,24 @@ export class ProfilePage {
   }
 
   ionViewDidLoad() {
-    this.afAuth.authState.subscribe(data => {
+    // this.afAuth.authState.subscribe(data => {
 
-      if (data && data.email && data.uid){
-        this.toast.create({
-          message: `Olá, ${data.email}`,
-          duration: 3000
-        }).present();
+    //   if (data && data.email && data.uid){
+    //     this.toast.create({
+    //       message: `Olá, ${data.displayName}`,
+    //       duration: 3000
+    //     }).present();
 
-        this.profileData = this.afDatabase.object(`profile/${data.uid}`);
-      } 
-      else {
-        // this.toast.create({
-        //   message: `Não encontrou a autenticacao`,
-        //   duration: 3000
-        // }).present();
-        console.log('ocorreu algum erro, verificar.');
-      }
-    })
+    //     this.profileData = this.afDatabase.object(`profile/${data.uid}`);
+    //   } 
+    //   else {
+    //     // this.toast.create({
+    //     //   message: `Não encontrou a autenticacao`,
+    //     //   duration: 3000
+    //     // }).present();
+    //     console.log('ocorreu algum erro, verificar.');
+    //   }
+    // })
   }
 
   updateProfile() {
