@@ -1,11 +1,13 @@
 
 <ion-header>
-  <ion-navbar class="favorite">
+  <ion-navbar color="favorite6">
     <ion-title>Login</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="bg-image">
+
+    <br>
 
     <ion-item>
         <ion-label floating>Email</ion-label>
@@ -26,14 +28,13 @@
     </ion-buttons>
 
     <br>
-
-<h6>Mais opções:</h6>
-
     <br>
+
+<h6>mais opções</h6>
 
     <ion-fab middle center edge class="personalizedPosition">
 
-        <button ion-fab><ion-icon name="add"></ion-icon></button>
+        <button ion-fab color="light"><ion-icon name="add"></ion-icon></button>
 
         <ion-fab-list side="top">
             <button ion-fab color="facebook"><ion-icon name="logo-facebook" (click)="loginWithFacebook()"></ion-icon></button>

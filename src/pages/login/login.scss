@@ -14,17 +14,23 @@ page-login {
     }
 
     .bg-image {
-        background-image: url('../assets/imgs/login_bg.png');
+        background-image: url('../assets/imgs/bg1.png');
         background-repeat: no-repeat;
         // background-size: 250%;  
         background-position: left;
     }
 
     .personalizedPosition {
-        top: 27em;
+        top: 29em;
     }
 
     button .twitter {
        color: #00aced
     }
+
+    h6 {
+        color: #ffff;
+        text-align: center
+    }
+
 }
